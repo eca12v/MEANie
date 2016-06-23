@@ -1,6 +1,7 @@
 var myApp=angular.module( 'myApp', [] );
 // create a controller
 myApp.controller( 'whereMyPeeps', [ '$scope', '$http', function( $scope, $http ){
+  $scope.allTheRecords =[];
   $scope.addRecord = function(){
     event.preventDefault();
     // get the user input and store in an object
@@ -28,10 +29,10 @@ myApp.controller( 'whereMyPeeps', [ '$scope', '$http', function( $scope, $http )
       // like an ajax success
       // we have been sent back "response"
       // .data is the data in the reponse
-      $scope.allTheRecords = response; // .data;
+      $scope.allTheRecords = response.data; // .data;
       console.log( $scope.allTheRecords );
-    }), function myError( response ){
+    }, function myError( response ){
       console.log( response.statusText );
-    };
+    });
   }; // end getRecords
 }]); // end whereMyPeeps controller

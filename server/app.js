@@ -5,7 +5,7 @@ var bodyParser = require('body-parser');
 app.use( bodyParser.json() );
 var mongoose = require('mongoose');
 // 27017 is default mongo port
-mongoose.connect('localhost:/27017/test')
+mongoose.connect('localhost:/27017/test');
 var ourSchema = new  mongoose.Schema({
   name: String,
   location: String
@@ -38,7 +38,7 @@ app.post( '/testPost', function( req, res ){
   var recordToAdd={
     name: req.body.name,
     location: req.body.location
-  }
+  };
   // MAGIIIIIIIIIIC
   var newRecord=ourModel( recordToAdd );
   newRecord.save();
